@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+    <title>GCF Generator</title>
+</head>
+<div class="container">
+
+    <body>
+        <br>
+        <div class="title">
+            <b>
+                <p>GCF Generator</p>
+            </b>
+        </div>
+        <p>Enter two numbers that you want to find the GCF for, then press "Submit"</p>
+        <label for="firstNum">First Number</label><br>
+        <input class="inputBox" type="number" id="firstNum" name="firstNum"><br><br>
+        <label for="secNum">Second Number</label><br>
+        <input class="inputBox" type="number" id="secNum" name="secNum"><br><br>
+        <input class="subButton" type="button" value="Submit" onclick="GCF()"><br><br>
+        <p id="result"></p>
+    </body>
+</div>
+<script>
+    function GCF() {
+        const firstNum = parseInt(document.getElementById("firstNum").value);
+        const secondNum = parseInt(document.getElementById("secNum").value);
+
+        if (isNaN(firstNum) || isNaN(secondNum)) {
+            alert("Enter a valid positive integer.")
+        }
+
+        else {
+
+            if (firstNum < 1 || secondNum < 1) {
+                document.getElementById("result").innerHTML = "Enter a valid positive integer."
+            }
+
+            else if (firstNum === secondNum) {
+                document.getElementById("result").innerHTML = "GCF: " + firstNum;
+            }
+
+            else {
+                let gcf = 1;
+                for (let i = 1; i <= firstNum; i++) {
+                    if (firstNum % i == 0 && secondNum % i == 0 && i > gcf) {
+                        gcf = i;
+                    }
+                }
+                document.getElementById("result").innerHTML = "GCF: " + gcf;
+            }
+
+        }
+    }
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;500&display=swap');
+
+    .inputBox {
+        font-family: "Lexend";
+        font-size: 14px;
+        background-color: #EFF1ED;
+        border-radius: 8px;
+        color: #373D20;
+    }
+
+    .subButton {
+        font-family: "Lexend";
+        font-size: 18px;
+        background-color: #717744;
+        border-radius: 8px;
+        color: #EFF1ED;
+    }
+
+    .subButton:hover {
+        background-color: #BCBD8B;
+        color: #373D20;
+    }
+
+    .title {
+        font-family: "Lexend";
+        font-size: 30px;
+        text-align: center;
+        color: #373D20;
+    }
+
+    .container {
+        text-align: center;
+        height: 500px;
+        width: 500px;
+        font-family: "Lexend";
+        font-size: 20px;
+        border: 2px solid;
+        border-radius: 15px;
+        align-items: center;
+        color: #373D20;
+        background-color: #EFF1ED;
+    }
+</style>
+
+</html>
